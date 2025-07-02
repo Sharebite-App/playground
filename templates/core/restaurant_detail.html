@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Restaurants</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ restaurant.name }}</li>
+            </ol>
+        </nav>
+
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0">
+                    <i class="fas fa-store me-2"></i>{{ restaurant.name }}
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <p class="mb-1">
+                            <i class="fas fa-map-marker-alt me-2 text-success"></i>
+                            <strong>Address:</strong>
+                        </p>
+                        <p class="text-muted">{{ restaurant.address }}</p>
+                        {% if restaurant.city %}
+                        <p class="text-muted">{{ restaurant.city }}, {{ restaurant.state }} {{ restaurant.zip_code }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        {% if restaurant.phone %}
+                        <p class="mb-1">
+                            <i class="fas fa-phone me-2 text-success"></i>
+                            <strong>Phone:</strong>
+                        </p>
+                        <p class="text-muted">{{ restaurant.phone }}</p>
+                        {% endif %}
+                        {% if restaurant.email %}
+                        <p class="mb-1">
+                            <i class="fas fa-envelope me-2 text-success"></i>
+                            <strong>Email:</strong>
+                        </p>
+                        <p class="text-muted">{{ restaurant.email }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <hr>
+
+                <h4 class="mb-3">
+                    <i class="fas fa-list me-2"></i>Menu Sections
+                </h4>
+
+                {% if sections %}
+                <div class="row g-3">
+                    {% for section in sections %}
+                    <div class="col-md-6">
+                        <div class="card border-success">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ section.name }}</h5>
+                                {% if section.description %}
+                                <p class="card-text text-muted">{{ section.description }}</p>
+                                {% endif %}
+                                <a href="{% url 'section_detail' restaurant.id section.id %}" class="btn btn-outline-success">
+                                    <i class="fas fa-eye me-2"></i>View Items
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="text-center py-4">
+                    <i class="fas fa-list fa-2x text-muted mb-3"></i>
+                    <p class="text-muted">No menu sections available yet.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

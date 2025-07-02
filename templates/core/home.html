@@ -2,101 +2,55 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-lg-8 mx-auto">
+    <div class="col-lg-10 mx-auto">
         <!-- Hero Section -->
         <div class="text-center mb-5">
-            <h1 class="display-4 fw-bold text-primary mb-3">
-                <i class="fas fa-rocket me-3"></i>Welcome to Django 5
+            <h1 class="display-4 fw-bold text-success mb-3">
+                <i class="fas fa-utensils me-3"></i>Sharebite LITE
             </h1>
             <p class="lead text-muted mb-4">
-                A modern, fast, and secure web framework for building robust applications.
+                Discover amazing restaurants and order your favorite meals with ease.
             </p>
-            {% if not user.is_authenticated %}
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                <a href="{% url 'register' %}" class="btn btn-primary btn-lg px-4 me-md-2">
-                    <i class="fas fa-user-plus me-2"></i>Get Started
-                </a>
-                <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg px-4">
-                    <i class="fas fa-sign-in-alt me-2"></i>Login
-                </a>
-            </div>
-            {% else %}
-            <a href="{% url 'post_create' %}" class="btn btn-primary btn-lg px-4">
-                <i class="fas fa-plus me-2"></i>Create New Post
-            </a>
-            {% endif %}
         </div>
 
-        <!-- Features Section -->
-        <div class="row g-4 mb-5">
-            <div class="col-md-4">
+        <!-- Restaurants Section -->
+        {% if restaurants %}
+        <div class="row g-4">
+            {% for restaurant in restaurants %}
+            <div class="col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Secure</h5>
-                        <p class="card-text text-muted">Built with security in mind, protecting against common vulnerabilities.</p>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-store fa-2x text-success me-3"></i>
+                            <h5 class="card-title mb-0">{{ restaurant.name }}</h5>
+                        </div>
+                        <p class="card-text text-muted">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            {{ restaurant.address }}
+                            {% if restaurant.city %}
+                            <br><small>{{ restaurant.city }}, {{ restaurant.state }}</small>
+                            {% endif %}
+                        </p>
+                        {% if restaurant.phone %}
+                        <p class="card-text text-muted">
+                            <i class="fas fa-phone me-1"></i>{{ restaurant.phone }}
+                        </p>
+                        {% endif %}
+                        <a href="{% url 'restaurant_detail' restaurant.id %}" class="btn btn-success">
+                            <i class="fas fa-utensils me-2"></i>View Menu
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fas fa-tachometer-alt fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Fast</h5>
-                        <p class="card-text text-muted">High-performance framework designed for speed and scalability.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Responsive</h5>
-                        <p class="card-text text-muted">Mobile-first design that works perfectly on all devices.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Recent Posts Section -->
-        {% if posts %}
-        <div class="card border-0 shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h5 class="mb-0">
-                    <i class="fas fa-newspaper me-2"></i>Recent Posts
-                </h5>
-            </div>
-            <div class="card-body">
-                {% for post in posts %}
-                <div class="border-bottom pb-3 mb-3 {% if not forloop.last %}border-bottom{% endif %}">
-                    <h5 class="card-title">
-                        <a href="{% url 'post_detail' post.pk %}" class="text-decoration-none">{{ post.title }}</a>
-                    </h5>
-                    <p class="card-text text-muted">{{ post.content|truncatewords:30 }}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">
-                            <i class="fas fa-user me-1"></i>{{ post.author.username }}
-                        </small>
-                        <small class="text-muted">
-                            <i class="fas fa-calendar me-1"></i>{{ post.created_at|date:"M d, Y" }}
-                        </small>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+            {% endfor %}
         </div>
         {% else %}
         <div class="text-center py-5">
-            <i class="fas fa-newspaper fa-3x text-muted mb-3"></i>
-            <h5 class="text-muted">No posts yet</h5>
-            <p class="text-muted">Be the first to create a post!</p>
-            {% if user.is_authenticated %}
-            <a href="{% url 'post_create' %}" class="btn btn-primary">
-                <i class="fas fa-plus me-2"></i>Create First Post
-            </a>
-            {% endif %}
+            <i class="fas fa-utensils fa-3x text-muted mb-3"></i>
+            <h5 class="text-muted">No restaurants available</h5>
+            <p class="text-muted">Check back soon for new restaurants!</p>
         </div>
         {% endif %}
     </div>
 </div>
-{% endblock %} 
+{% endblock %}

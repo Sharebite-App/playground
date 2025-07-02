@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Restaurants</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'restaurant_detail' restaurant.id %}">{{ restaurant.name }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ section.name }}</li>
+            </ol>
+        </nav>
+
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0">
+                    <i class="fas fa-list me-2"></i>{{ section.name }}
+                </h3>
+                <small>{{ restaurant.name }}</small>
+            </div>
+            <div class="card-body">
+                {% if section.description %}
+                <p class="text-muted mb-4">{{ section.description }}</p>
+                {% endif %}
+
+                {% if items %}
+                <div class="row g-3">
+                    {% for item in items %}
+                    <div class="col-md-6">
+                        <div class="card border-success h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge bg-success fs-6">${{ item.price }}</span>
+                                </div>
+                                {% if item.description %}
+                                <p class="card-text text-muted">{{ item.description }}</p>
+                                {% endif %}
+                                <button class="btn btn-success btn-sm">
+                                    <i class="fas fa-plus me-1"></i>Add to Order
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="text-center py-4">
+                    <i class="fas fa-utensils fa-2x text-muted mb-3"></i>
+                    <p class="text-muted">No items available in this section.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
