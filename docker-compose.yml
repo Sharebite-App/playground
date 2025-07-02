@@ -1,0 +1,41 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BUILD_ENV: local
+        LOCAL_ARCH: arm
+    image: sharebite-playground
+    environment:
+      - IS_DEBUG=true
+    stdin_open: true  # For pdb
+    tty: true         # For pdb
+    volumes:
+      - .:/src
+    working_dir: /src
+    ports:
+      - "8080:8000"
+    networks:
+      - playground_network
+
+  db:
+    container_name: playground-db
+    image: mysql:8.0
+    volumes:
+      - ~/DockerDB/mysql-playground/8.0:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    command: [ "--max-allowed-packet=32505856", "--max_connections=512", "--lower_case_table_names=1"]
+    environment:
+      - MYSQL_ROOT_PASSWORD=sharebite
+      - MYSQL_DATABASE=playground
+      
+    networks:
+      - playground_network
+  
+networks:
+  playground_network:
+    external: true
+
+
