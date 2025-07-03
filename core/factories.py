@@ -6,12 +6,19 @@ from factory import Faker, SubFactory, LazyAttribute
 from decimal import Decimal
 import random
 
+RESTAURANT_PREFIXES = ['The', 'Golden', 'Silver', 'Copper', 'Iron', 'Steel', 'Famous', "Joe's", 'Tasty', 'New York', 'Chicago', 'Vegan',]
+RESTAURANT_SUFFIXES = ['Fork', 'Spoon', 'Knife', 'Plate', 'Bowl', 'Pot', 'Pan', 'Burger', 'Pizza', 'Diner', 'Restaurant', 'Bar and Grill', 'Bistro',]
+
+def generate_restaurant_name():
+    prefix = random.choice(RESTAURANT_PREFIXES)
+    suffix = random.choice(RESTAURANT_SUFFIXES)
+    return f"{prefix} {suffix}"
 
 class RestaurantFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Restaurant
     
-    name = Faker('company')
+    name = factory.LazyFunction(generate_restaurant_name)
     address = Faker('street_address')
     city = Faker('city')
     state = Faker('state_abbr')

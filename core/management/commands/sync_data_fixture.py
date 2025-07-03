@@ -15,7 +15,7 @@ class Command(BaseCommand):
 
 class SyncDataFixtureService:
 
-    def basic_sync(self, target_restaurant_count: int = 10):
+    def basic_sync(self, target_restaurant_count: int = 50):
         current_restaurants = Restaurant.objects.filter(archive_status=False)
         current_restaurant_count = current_restaurants.count()
         logger.info(f"Found {current_restaurant_count} restaurants")

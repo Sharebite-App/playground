@@ -18,6 +18,9 @@ services:
       - "8080:8000"
     networks:
       - playground_network
+    depends_on:
+      db:
+        condition: service_healthy
 
   db:
     container_name: playground-db
@@ -30,12 +33,16 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=sharebite
       - MYSQL_DATABASE=playground
-      
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-psharebite"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     networks:
       - playground_network
   
 networks:
   playground_network:
-    external: true
-
+    name: playground_network
 
