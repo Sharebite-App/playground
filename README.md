@@ -6,8 +6,8 @@
 - Run `docker compose up`
 - Run `docker compose run api ./scripts/init.sh`
 
-Now you can view the site at `http://localhost:8080`
-And the admin site at `http://localhost:8080/admin` with the username `admin` and the password `Password123!` (or whatever you set in your `.env` file)
+Now you can view the site at `http://localhost:8989`
+And the admin site at `http://localhost:8989/admin` with the username `admin` and the password `Password123!` (or whatever you set in your `.env` file)
 
 ![Sharebite LITE Screenshot](screenshots/homepage.png)
 

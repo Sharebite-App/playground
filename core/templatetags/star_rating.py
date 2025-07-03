@@ -1,5 +1,4 @@
 from django import template
-from django.template.defaultfilters import floatformat
 from django.utils.safestring import mark_safe
 
 register = template.Library()
