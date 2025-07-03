@@ -27,8 +27,6 @@ services:
     image: mysql:8.0
     volumes:
       - ~/DockerDB/mysql-playground/8.0:/var/lib/mysql
-    ports:
-      - "3306:3306"
     command: [ "--max-allowed-packet=32505856", "--max_connections=512", "--lower_case_table_names=1"]
     environment:
       - MYSQL_ROOT_PASSWORD=sharebite
