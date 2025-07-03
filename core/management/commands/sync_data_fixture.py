@@ -4,6 +4,8 @@ from django.core.management.base import BaseCommand
 
 from core.factories import RestaurantWithMenuFactory
 from core.models.restaurant_model import Restaurant
+from playground.settings import DEFAULT_ADMIN_PASSWORD
+from django.contrib.auth.models import User
 
 logger = logging.getLogger(__name__)
 
@@ -12,8 +14,17 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         sync_data_fixture_service = SyncDataFixtureService()
         sync_data_fixture_service.basic_sync()
+        sync_data_fixture_service.create_admin_user()
 
 class SyncDataFixtureService:
+
+    def create_admin_user(self):
+        admin = User.objects.create_superuser(
+            username='admin',
+            email='admin@playground.com',
+            password=DEFAULT_ADMIN_PASSWORD
+        )
+        logger.info(f"Created admin user: {admin.username}")
 
     def basic_sync(self, target_restaurant_count: int = 50):
         current_restaurants = Restaurant.objects.filter(archive_status=False)
