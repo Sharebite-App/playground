@@ -5,8 +5,8 @@ from core.views import HomeView, RegisterView, RestaurantListView, RestaurantDet
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('restaurants/', RestaurantListView.as_view(), name='restaurant_list'),
-    path('restaurant/<int:restaurant_id>/', RestaurantDetailView.as_view(), name='restaurant_detail'),
-    path('restaurant/<int:restaurant_id>/section/<int:section_id>/', SectionDetailView.as_view(), name='section_detail'),
+    path('restaurant/<int:pk>/', RestaurantDetailView.as_view(), name='restaurant_detail'),
+    path('restaurant/<int:restaurant_pk>/section/<int:pk>/', SectionDetailView.as_view(), name='section_detail'),
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='core/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),

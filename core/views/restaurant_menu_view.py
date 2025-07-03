@@ -2,8 +2,6 @@ from django.views.generic import DetailView
 from core.models.restaurant_model import Restaurant
 
 
-
-
 class RestaurantDetailView(DetailView):
     """Show restaurant details and sections"""
     model = Restaurant
