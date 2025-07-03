@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-lg-10 mx-auto">
+    <div class="col-lg-8 mx-auto">
         <!-- Hero Section -->
         <div class="text-center mb-5">
             <h1 class="display-4 fw-bold text-success mb-3">
@@ -11,46 +11,61 @@
             <p class="lead text-muted mb-4">
                 Discover amazing restaurants and order your favorite meals with ease.
             </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <a href="{% url 'restaurant_list' %}" class="btn btn-success btn-lg px-4 me-md-2">
+                    <i class="fas fa-search me-2"></i>Search for Restaurants
+                </a>
+                {% if not user.is_authenticated %}
+                <a href="{% url 'register' %}" class="btn btn-outline-success btn-lg px-4">
+                    <i class="fas fa-user-plus me-2"></i>Get Started
+                </a>
+                {% endif %}
+            </div>
         </div>
 
-        <!-- Restaurants Section -->
-        {% if restaurants %}
-        <div class="row g-4">
-            {% for restaurant in restaurants %}
-            <div class="col-md-6 col-lg-4">
+        <!-- Features Section -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
                 <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fas fa-store fa-2x text-success me-3"></i>
-                            <h5 class="card-title mb-0">{{ restaurant.name }}</h5>
-                        </div>
-                        <p class="card-text text-muted">
-                            <i class="fas fa-map-marker-alt me-1"></i>
-                            {{ restaurant.address }}
-                            {% if restaurant.city %}
-                            <br><small>{{ restaurant.city }}, {{ restaurant.state }}</small>
-                            {% endif %}
-                        </p>
-                        {% if restaurant.phone %}
-                        <p class="card-text text-muted">
-                            <i class="fas fa-phone me-1"></i>{{ restaurant.phone }}
-                        </p>
-                        {% endif %}
-                        <a href="{% url 'restaurant_detail' restaurant.id %}" class="btn btn-success">
-                            <i class="fas fa-utensils me-2"></i>View Menu
-                        </a>
+                    <div class="card-body text-center">
+                        <i class="fas fa-search fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Find Restaurants</h5>
+                        <p class="card-text text-muted">Browse through our curated selection of local restaurants.</p>
                     </div>
                 </div>
             </div>
-            {% endfor %}
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-utensils fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Explore Menus</h5>
+                        <p class="card-text text-muted">View detailed menus with prices and descriptions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-heart fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Save Favorites</h5>
+                        <p class="card-text text-muted">Keep track of your favorite restaurants and dishes.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        {% else %}
-        <div class="text-center py-5">
-            <i class="fas fa-utensils fa-3x text-muted mb-3"></i>
-            <h5 class="text-muted">No restaurants available</h5>
-            <p class="text-muted">Check back soon for new restaurants!</p>
+
+        <!-- Call to Action -->
+        <div class="text-center">
+            <div class="card border-success">
+                <div class="card-body">
+                    <h4 class="card-title">Ready to explore?</h4>
+                    <p class="card-text">Start discovering amazing restaurants in your area.</p>
+                    <a href="{% url 'restaurant_list' %}" class="btn btn-success btn-lg">
+                        <i class="fas fa-search me-2"></i>Browse Restaurants
+                    </a>
+                </div>
+            </div>
         </div>
-        {% endif %}
     </div>
 </div>
 {% endblock %}
