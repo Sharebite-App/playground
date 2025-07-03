@@ -7,6 +7,35 @@
         <h2 class="mb-4 text-success text-center">
             <i class="fas fa-search me-2"></i>Find Your Favorite Restaurants
         </h2>
+        <!-- Search/Filter Button -->
+        <div class="text-end mb-3">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <i class="fas fa-filter me-2"></i>Search/Filter
+            </button>
+        </div>
+        <!-- Search Modal -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="searchModalLabel">Search/Filter Restaurants</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="get" action="{% url 'restaurant_list' %}">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="search" class="form-label">Search</label>
+                                <input type="text" class="form-control" id="search" name="search" placeholder="Enter restaurant name...">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Apply</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         {% if restaurants %}
         <div class="row g-4">
             {% for restaurant in restaurants %}
@@ -19,7 +48,7 @@
                                 <h5 class="card-title mb-0">{{ restaurant.name }}</h5>
                                 <!-- Star Rating -->
                                 <div class="mt-1">
-                                    {{ restaurant.rating|star_rating }}
+                                    {{ restaurant.rating|star_rating|safe }}
                                     <small class="text-muted ms-1">({{ restaurant.rating }})</small>
                                 </div>
                             </div>
