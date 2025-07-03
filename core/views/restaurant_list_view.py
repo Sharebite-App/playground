@@ -8,7 +8,7 @@ class RestaurantListView(ListView):
     context_object_name = 'restaurants'
     
     def get_queryset(self):
-        return Restaurant.objects.filter(archive_status=False).order_by('name')
+        return Restaurant.objects.filter(archive_status=False).order_by('-rating')
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

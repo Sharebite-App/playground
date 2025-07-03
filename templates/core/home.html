@@ -12,9 +12,6 @@
                 Discover amazing restaurants and order your favorite meals with ease.
             </p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                <a href="{% url 'restaurant_list' %}" class="btn btn-success btn-lg px-4 me-md-2">
-                    <i class="fas fa-search me-2"></i>Search for Restaurants
-                </a>
                 {% if not user.is_authenticated %}
                 <a href="{% url 'register' %}" class="btn btn-outline-success btn-lg px-4">
                     <i class="fas fa-user-plus me-2"></i>Get Started
@@ -47,8 +44,8 @@
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body text-center">
                         <i class="fas fa-heart fa-3x text-success mb-3"></i>
-                        <h5 class="card-title">Save Favorites</h5>
-                        <p class="card-text text-muted">Keep track of your favorite restaurants and dishes.</p>
+                        <h5 class="card-title">Find New Favorites</h5>
+                        <p class="card-text text-muted">Discover new flavours and cuisines.</p>
                     </div>
                 </div>
             </div>
@@ -61,7 +58,7 @@
                     <h4 class="card-title">Ready to explore?</h4>
                     <p class="card-text">Start discovering amazing restaurants in your area.</p>
                     <a href="{% url 'restaurant_list' %}" class="btn btn-success btn-lg">
-                        <i class="fas fa-search me-2"></i>Browse Restaurants
+                        <i class="fas fa-search me-2"></i>Browse All Restaurants
                     </a>
                 </div>
             </div>

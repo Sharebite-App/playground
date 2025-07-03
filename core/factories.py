@@ -26,6 +26,7 @@ class RestaurantFactory(factory.django.DjangoModelFactory):
     country = 'USA'
     phone = Faker('phone_number')
     email = Faker('company_email')
+    rating = LazyAttribute(lambda x: Decimal(str(random.uniform(1.0, 5.0))))
 
 
 class SectionFactory(factory.django.DjangoModelFactory):
