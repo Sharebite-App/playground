@@ -1,0 +1,41 @@
+<div class="restaurants-list container py-4">
+  <h1 class="fw-bold mb-4">Restaurants near you</h1>
+
+  <!-- Search -->
+  <app-search-bar placeholder="Search restaurants or cuisines…" (search)="onSearch($event)" class="mb-4 d-block" />
+
+  <!-- Cuisine filter chips -->
+  <div class="filter-chips d-flex flex-wrap gap-2 mb-3">
+    @for (cuisine of cuisines; track cuisine) {
+      <button
+        class="btn btn-sm rounded-pill"
+        [class.btn-primary]="selectedCuisine() === cuisine"
+        [class.btn-outline-secondary]="selectedCuisine() !== cuisine"
+        (click)="selectCuisine(cuisine)"
+      >{{ cuisine }}</button>
+    }
+  </div>
+
+  <!-- Sort -->
+  <div class="d-flex align-items-center gap-2 mb-4">
+    <span class="text-muted small me-1">Sort by:</span>
+    <button class="btn btn-sm" [class.btn-secondary]="sortBy() === 'rating'" [class.btn-outline-secondary]="sortBy() !== 'rating'" (click)="setSort('rating')">Rating</button>
+    <button class="btn btn-sm" [class.btn-secondary]="sortBy() === 'deliveryTime'" [class.btn-outline-secondary]="sortBy() !== 'deliveryTime'" (click)="setSort('deliveryTime')">Delivery Time</button>
+    <button class="btn btn-sm" [class.btn-secondary]="sortBy() === 'deliveryFee'" [class.btn-outline-secondary]="sortBy() !== 'deliveryFee'" (click)="setSort('deliveryFee')">Delivery Fee</button>
+  </div>
+
+  <!-- Results -->
+  @if (loading()) {
+    <app-spinner />
+  } @else if (filtered().length === 0) {
+    <app-empty-state message="No restaurants match your search." icon="🔍" />
+  } @else {
+    <div class="row g-4">
+      @for (restaurant of filtered(); track restaurant.id) {
+        <div class="col-12 col-sm-6 col-lg-4">
+          <app-restaurant-card [restaurant]="restaurant" />
+        </div>
+      }
+    </div>
+  }
+</div>

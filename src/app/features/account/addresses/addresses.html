@@ -1,0 +1,60 @@
+<div class="card shadow-sm p-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h5 class="fw-semibold mb-0">Saved Addresses</h5>
+    <button class="btn btn-sm btn-outline-primary" (click)="showForm.update(v => !v)">
+      <i class="bi bi-plus me-1"></i>Add Address
+    </button>
+  </div>
+
+  @if (showForm()) {
+    <div class="border rounded p-3 mb-4 bg-light">
+      <h6 class="fw-semibold mb-3">New Address</h6>
+      <form [formGroup]="form" (ngSubmit)="add()">
+        <div class="mb-3">
+          <label class="form-label">Label</label>
+          <select class="form-select" formControlName="label">
+            <option>Home</option>
+            <option>Work</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Street address</label>
+          <input type="text" class="form-control" formControlName="street"
+            [class.is-invalid]="form.get('street')?.invalid && form.get('street')?.touched" />
+          <div class="invalid-feedback">Required.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Apt / Floor (optional)</label>
+          <input type="text" class="form-control" formControlName="floor" />
+        </div>
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary btn-sm" [disabled]="saving()">
+            @if (saving()) { <span class="spinner-border spinner-border-sm me-1"></span> }
+            Save
+          </button>
+          <button type="button" class="btn btn-outline-secondary btn-sm" (click)="showForm.set(false)">Cancel</button>
+        </div>
+      </form>
+    </div>
+  }
+
+  @if (authService.currentUser()?.addresses?.length === 0) {
+    <p class="text-muted">No saved addresses yet.</p>
+  } @else {
+    <div class="d-flex flex-column gap-2">
+      @for (addr of authService.currentUser()?.addresses; track addr.id) {
+        <div class="border rounded p-3 d-flex justify-content-between align-items-start">
+          <div>
+            <span class="badge bg-secondary me-2">{{ addr.label }}</span>
+            <span>{{ addr.street }}</span>
+            @if (addr.floor) { <div class="text-muted small">{{ addr.floor }}</div> }
+          </div>
+          <button class="btn btn-sm btn-outline-danger" (click)="delete(addr.id)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,48 @@
+<div class="auth-page d-flex align-items-center justify-content-center min-vh-100 bg-light">
+  <div class="auth-card card shadow-sm p-4" style="width: 100%; max-width: 420px;">
+    <div class="text-center mb-4">
+      <div class="fs-1">🍔</div>
+      <h2 class="fw-bold">Welcome back</h2>
+      <p class="text-muted">Sign in to your FoodApp account</p>
+    </div>
+
+    @if (error) {
+      <div class="alert alert-danger">{{ error }}</div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" formControlName="email"
+          [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched" />
+        @if (form.get('email')?.errors?.['required'] && form.get('email')?.touched) {
+          <div class="invalid-feedback">Email is required.</div>
+        }
+        @if (form.get('email')?.errors?.['email'] && form.get('email')?.touched) {
+          <div class="invalid-feedback">Enter a valid email.</div>
+        }
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="password"
+          [class.is-invalid]="form.get('password')?.invalid && form.get('password')?.touched" />
+        @if (form.get('password')?.errors?.['required'] && form.get('password')?.touched) {
+          <div class="invalid-feedback">Password is required.</div>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+        @if (loading) { <span class="spinner-border spinner-border-sm me-2"></span> }
+        Sign In
+      </button>
+    </form>
+
+    <p class="text-center mt-3 mb-0 text-muted small">
+      No account? <a routerLink="/register">Create one</a>
+    </p>
+    <p class="text-center mt-2 text-muted" style="font-size: 0.75rem;">
+      Demo: alex.kim&#64;example.com / any password
+    </p>
+  </div>
+</div>

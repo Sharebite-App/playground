@@ -1,0 +1,25 @@
+<a
+  class="restaurant-card card h-100 text-decoration-none text-dark"
+  [routerLink]="['/restaurants', restaurant.id, slug]"
+>
+  <div class="card-img-wrapper position-relative">
+    <img [src]="restaurant.photo" [alt]="restaurant.name" class="card-img-top" loading="lazy" />
+    @if (!restaurant.isOpen) {
+      <div class="closed-overlay d-flex align-items-center justify-content-center">
+        <span class="badge bg-dark fs-6">Closed</span>
+      </div>
+    }
+    @for (tag of restaurant.tags; track tag) {
+      <span class="badge bg-primary position-absolute top-0 start-0 m-2">{{ tag }}</span>
+    }
+  </div>
+  <div class="card-body">
+    <h5 class="card-title mb-1">{{ restaurant.name }}</h5>
+    <p class="text-muted small mb-2">{{ restaurant.cuisine.join(', ') }}</p>
+    <div class="d-flex align-items-center gap-3 text-muted small">
+      <app-star-rating [rating]="restaurant.rating" />
+      <span><i class="bi bi-clock me-1"></i>{{ restaurant.estimatedDeliveryTime }}</span>
+      <span><i class="bi bi-truck me-1"></i>{{ restaurant.deliveryFee | currencyFormat }} delivery</span>
+    </div>
+  </div>
+</a>

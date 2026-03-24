@@ -1,0 +1,64 @@
+@if (loading()) {
+  <app-spinner />
+} @else if (restaurant()) {
+  <div class="restaurant-detail">
+    <!-- Hero -->
+    <div class="hero position-relative">
+      <img [src]="restaurant()!.photo" [alt]="restaurant()!.name" class="hero-img w-100" />
+      <div class="hero-overlay d-flex align-items-end">
+        <div class="container pb-4 text-white">
+          <h1 class="fw-bold mb-1">{{ restaurant()!.name }}</h1>
+          <p class="mb-2 opacity-75">{{ restaurant()!.cuisine.join(' · ') }}</p>
+          <div class="d-flex align-items-center gap-3 small">
+            <app-star-rating [rating]="restaurant()!.rating" />
+            <span><i class="bi bi-clock me-1"></i>{{ restaurant()!.estimatedDeliveryTime }}</span>
+            <span><i class="bi bi-truck me-1"></i>{{ restaurant()!.deliveryFee | currencyFormat }} delivery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-4">
+      <!-- Category nav -->
+      <div class="category-nav sticky-top bg-white border-bottom mb-4 py-2">
+        <div class="d-flex gap-2 overflow-auto">
+          @for (cat of categories(); track cat.id) {
+            <button
+              class="btn btn-sm rounded-pill flex-shrink-0"
+              [class.btn-primary]="activeCategory() === cat.id"
+              [class.btn-outline-secondary]="activeCategory() !== cat.id"
+              (click)="scrollToCategory(cat.id)"
+            >{{ cat.name }}</button>
+          }
+        </div>
+      </div>
+
+      <!-- Menu sections -->
+      @for (cat of categories(); track cat.id) {
+        <section [id]="'category-' + cat.id" class="mb-5">
+          <h3 class="fw-bold mb-3 border-bottom pb-2">{{ cat.name }}</h3>
+          <div class="row g-3">
+            @for (item of cat.items; track item.id) {
+              <div class="col-12 col-md-6">
+                <div class="menu-item card h-100 border-0 shadow-sm" (click)="openItem(item)" role="button">
+                  <div class="row g-0 h-100">
+                    <div class="col-8 d-flex flex-column justify-content-between p-3">
+                      <div>
+                        <h6 class="fw-semibold mb-1">{{ item.name }}</h6>
+                        <p class="text-muted small mb-0 description">{{ item.description }}</p>
+                      </div>
+                      <div class="mt-2 fw-semibold text-primary">{{ item.price | currencyFormat }}</div>
+                    </div>
+                    <div class="col-4">
+                      <img [src]="item.photo" [alt]="item.name" class="item-img rounded-end" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </section>
+      }
+    </div>
+  </div>
+}

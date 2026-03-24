@@ -1,0 +1,61 @@
+<div class="confirmation-page container py-5" style="max-width: 640px;">
+  @if (order()) {
+    <!-- Success banner -->
+    <div class="text-center mb-5">
+      <div class="success-icon mb-3">🎉</div>
+      <h2 class="fw-bold">Order Confirmed!</h2>
+      <p class="text-muted fs-5">Your order <strong>{{ order()!.id }}</strong> is on its way.</p>
+      <div class="badge bg-success-subtle text-success fs-6 px-3 py-2 rounded-pill">
+        Estimated delivery: {{ estimatedMinutes }} min
+      </div>
+    </div>
+
+    <!-- Status tracker -->
+    <div class="card shadow-sm p-4 mb-4">
+      <h5 class="fw-semibold mb-4">Track Your Order</h5>
+      <div class="d-flex justify-content-between position-relative tracker">
+        <div class="tracker-line"></div>
+        @for (step of statusSteps; track step.key; let i = $index) {
+          <div class="tracker-step text-center" [class.completed]="i <= statusIndex(order()!.status)">
+            <div class="tracker-icon mb-2">{{ step.icon }}</div>
+            <div class="tracker-label small">{{ step.label }}</div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm p-4 mb-4">
+      <h5 class="fw-semibold mb-3">Order Summary</h5>
+      <p class="text-muted small mb-3"><i class="bi bi-geo-alt me-1"></i>{{ order()!.deliveryAddress }}</p>
+      @for (item of order()!.items; track $index) {
+        <div class="d-flex justify-content-between py-2 border-bottom small">
+          <span>{{ item.quantity }}× {{ item.name }}</span>
+          <span class="text-muted">{{ (item.price * item.quantity) | currencyFormat }}</span>
+        </div>
+      }
+      <div class="mt-3 pt-1">
+        <div class="d-flex justify-content-between text-muted small mb-1"><span>Subtotal</span><span>{{ order()!.subtotal | currencyFormat }}</span></div>
+        <div class="d-flex justify-content-between text-muted small mb-1"><span>Delivery fee</span><span>{{ order()!.deliveryFee | currencyFormat }}</span></div>
+        <div class="d-flex justify-content-between text-muted small mb-1"><span>Tax</span><span>{{ order()!.tax | currencyFormat }}</span></div>
+        <div class="d-flex justify-content-between text-muted small mb-2"><span>Tip</span><span>{{ order()!.tip | currencyFormat }}</span></div>
+        @if (order()!.allowanceCovered) {
+          <div class="d-flex justify-content-between text-success small mb-1">
+            <span>Allowance ({{ order()!.expenseTypeName }})</span>
+            <span>−{{ order()!.allowanceCovered! | currencyFormat }}</span>
+          </div>
+          <div class="d-flex justify-content-between fw-bold"><span>You paid</span><span>{{ order()!.employeeOwes! | currencyFormat }}</span></div>
+        } @else {
+          <div class="d-flex justify-content-between fw-bold"><span>Total</span><span>{{ order()!.total | currencyFormat }}</span></div>
+        }
+      </div>
+    </div>
+
+    <div class="d-flex gap-3">
+      <a routerLink="/restaurants" class="btn btn-primary flex-grow-1">Back to Restaurants</a>
+      <a routerLink="/account/order-history" class="btn btn-outline-secondary">View Orders</a>
+    </div>
+  } @else {
+    <div class="text-center py-5 text-muted">Loading...</div>
+  }
+</div>

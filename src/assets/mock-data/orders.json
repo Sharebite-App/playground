@@ -1,0 +1,87 @@
+[
+  {
+    "id": "ORD-0001",
+    "restaurantId": 1,
+    "restaurantName": "Shake Shack",
+    "items": [
+      { "menuItemId": 101, "restaurantId": 1, "name": "ShackBurger", "price": 8.09, "quantity": 2, "selectedOptions": [{ "choiceId": 1, "optionId": 2, "name": "Double", "priceAdd": 2.00 }] },
+      { "menuItemId": 107, "restaurantId": 1, "name": "Crinkle-Cut Fries", "price": 3.49, "quantity": 1, "selectedOptions": [] }
+    ],
+    "subtotal": 21.67,
+    "tax": 1.97,
+    "deliveryFee": 2.99,
+    "tip": 3.00,
+    "total": 29.63,
+    "status": "delivered",
+    "placedAt": "2026-03-05T18:30:00.000Z",
+    "deliveryAddress": "123 Main St, New York, NY 10001"
+  },
+  {
+    "id": "ORD-0002",
+    "restaurantId": 2,
+    "restaurantName": "Joe's Pizza",
+    "items": [
+      { "menuItemId": 201, "restaurantId": 2, "name": "Plain Slice", "price": 3.50, "quantity": 2, "selectedOptions": [] },
+      { "menuItemId": 202, "restaurantId": 2, "name": "Pepperoni Slice", "price": 4.00, "quantity": 1, "selectedOptions": [] }
+    ],
+    "subtotal": 11.00,
+    "tax": 1.00,
+    "deliveryFee": 1.99,
+    "tip": 2.00,
+    "total": 15.99,
+    "status": "delivered",
+    "placedAt": "2026-03-10T12:15:00.000Z",
+    "deliveryAddress": "456 Park Ave, New York, NY 10022"
+  },
+  {
+    "id": "ORD-0003",
+    "restaurantId": 5,
+    "restaurantName": "Chipotle",
+    "items": [
+      { "menuItemId": 501, "restaurantId": 5, "name": "Burrito", "price": 10.70, "quantity": 1, "selectedOptions": [{ "choiceId": 6, "optionId": 16, "name": "Steak", "priceAdd": 1.50 }] },
+      { "menuItemId": 504, "restaurantId": 5, "name": "Chips & Guacamole", "price": 5.20, "quantity": 1, "selectedOptions": [] }
+    ],
+    "subtotal": 17.40,
+    "tax": 1.58,
+    "deliveryFee": 0.99,
+    "tip": 3.00,
+    "total": 22.97,
+    "status": "delivered",
+    "placedAt": "2026-03-17T13:00:00.000Z",
+    "deliveryAddress": "123 Main St, New York, NY 10001"
+  },
+  {
+    "id": "ORD-0004",
+    "restaurantId": 4,
+    "restaurantName": "Sweetgreen",
+    "items": [
+      { "menuItemId": 401, "restaurantId": 4, "name": "Harvest Bowl", "price": 14.95, "quantity": 1, "selectedOptions": [] },
+      { "menuItemId": 402, "restaurantId": 4, "name": "Kale Caesar", "price": 12.95, "quantity": 1, "selectedOptions": [{ "choiceId": 5, "optionId": 12, "name": "Roasted Chicken", "priceAdd": 3.00 }] }
+    ],
+    "subtotal": 30.90,
+    "tax": 2.81,
+    "deliveryFee": 2.49,
+    "tip": 5.00,
+    "total": 41.20,
+    "status": "delivered",
+    "placedAt": "2026-03-19T12:30:00.000Z",
+    "deliveryAddress": "456 Park Ave, New York, NY 10022"
+  },
+  {
+    "id": "ORD-0005",
+    "restaurantId": 3,
+    "restaurantName": "Ichiran Ramen",
+    "items": [
+      { "menuItemId": 301, "restaurantId": 3, "name": "Original Tonkotsu", "price": 19.90, "quantity": 1, "selectedOptions": [{ "choiceId": 3, "optionId": 7, "name": "Medium", "priceAdd": 0 }, { "choiceId": 4, "optionId": 11, "name": "Firm", "priceAdd": 0 }] },
+      { "menuItemId": 304, "restaurantId": 3, "name": "Soft Boiled Egg", "price": 2.50, "quantity": 1, "selectedOptions": [] }
+    ],
+    "subtotal": 22.40,
+    "tax": 2.04,
+    "deliveryFee": 3.99,
+    "tip": 4.00,
+    "total": 32.43,
+    "status": "placed",
+    "placedAt": "2026-03-20T10:00:00.000Z",
+    "deliveryAddress": "123 Main St, New York, NY 10001"
+  }
+]

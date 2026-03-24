@@ -1,0 +1,205 @@
+[
+  {
+    "id": 1, "restaurantId": 1, "name": "Burgers",
+    "items": [
+      { "id": 101, "name": "ShackBurger", "description": "Cheeseburger topped with lettuce, tomato, and ShackSauce™", "price": 8.09, "photo": "https://picsum.photos/seed/shackburger/300/200",
+        "choices": [{ "id": 1, "title": "Size", "required": true, "options": [{ "id": 1, "name": "Single", "priceAdd": 0 }, { "id": 2, "name": "Double", "priceAdd": 2.00 }] }] },
+      { "id": 102, "name": "SmokeShack", "description": "Cheeseburger with all-natural applewood smoked bacon and chopped cherry pepper", "price": 9.09, "photo": "https://picsum.photos/seed/smokeshack/300/200", "choices": [] },
+      { "id": 103, "name": "Shroom Burger", "description": "Crispy portobello mushroom filled with muenster and cheddar cheeses", "price": 9.59, "photo": "https://picsum.photos/seed/shroomburger/300/200", "choices": [] },
+      { "id": 104, "name": "Veggie Shack", "description": "All-natural veggie patty with a blend of roasted beets, brown rice, and tomatoes", "price": 8.59, "photo": "https://picsum.photos/seed/veggieshack/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 2, "restaurantId": 1, "name": "Chicken",
+    "items": [
+      { "id": 105, "name": "Chick'n Shack", "description": "Crispy chicken breast with pickles and ShackSauce™", "price": 8.59, "photo": "https://picsum.photos/seed/chickenshack/300/200", "choices": [] },
+      { "id": 106, "name": "Crispy Shack", "description": "Crispy chicken breast, no sauce", "price": 7.59, "photo": "https://picsum.photos/seed/crispyshack/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 3, "restaurantId": 1, "name": "Fries & Sides",
+    "items": [
+      { "id": 107, "name": "Crinkle-Cut Fries", "description": "Classic crinkle-cut fries", "price": 3.49, "photo": "https://picsum.photos/seed/crinklefries/300/200", "choices": [] },
+      { "id": 108, "name": "Cheese Fries", "description": "Crinkle-cut fries with Shack cheese sauce", "price": 4.49, "photo": "https://picsum.photos/seed/cheesefries/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 4, "restaurantId": 1, "name": "Shakes",
+    "items": [
+      { "id": 109, "name": "Vanilla Shake", "description": "Hand-spun vanilla custard shake", "price": 5.99, "photo": "https://picsum.photos/seed/vanillashake/300/200", "choices": [] },
+      { "id": 110, "name": "Chocolate Shake", "description": "Hand-spun chocolate custard shake", "price": 5.99, "photo": "https://picsum.photos/seed/chocolateshake/300/200", "choices": [] },
+      { "id": 111, "name": "Strawberry Shake", "description": "Hand-spun strawberry custard shake", "price": 5.99, "photo": "https://picsum.photos/seed/strawshake/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 5, "restaurantId": 2, "name": "Slices",
+    "items": [
+      { "id": 201, "name": "Plain Slice", "description": "Classic New York thin-crust cheese pizza", "price": 3.50, "photo": "https://picsum.photos/seed/plainslice/300/200", "choices": [] },
+      { "id": 202, "name": "Pepperoni Slice", "description": "Thin-crust with fresh mozzarella and pepperoni", "price": 4.00, "photo": "https://picsum.photos/seed/pepperoni/300/200", "choices": [] },
+      { "id": 203, "name": "Margherita Slice", "description": "Fresh mozzarella, basil, and San Marzano tomatoes", "price": 4.25, "photo": "https://picsum.photos/seed/margherita/300/200", "choices": [] },
+      { "id": 204, "name": "Sicilian Slice", "description": "Thick square slice with chunky tomato sauce", "price": 4.50, "photo": "https://picsum.photos/seed/sicilian/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 6, "restaurantId": 2, "name": "Whole Pies",
+    "items": [
+      { "id": 205, "name": "Plain Pie", "description": "18-inch classic cheese pie", "price": 22.00, "photo": "https://picsum.photos/seed/plainpie/300/200",
+        "choices": [{ "id": 2, "title": "Size", "required": true, "options": [{ "id": 3, "name": "18-inch", "priceAdd": 0 }, { "id": 4, "name": "14-inch", "priceAdd": -5.00 }] }] },
+      { "id": 206, "name": "Pepperoni Pie", "description": "18-inch with fresh mozzarella and pepperoni", "price": 27.00, "photo": "https://picsum.photos/seed/pepperonipie/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 7, "restaurantId": 2, "name": "Extras",
+    "items": [
+      { "id": 207, "name": "Garlic Knots", "description": "Fresh-baked garlic knots with marinara", "price": 5.00, "photo": "https://picsum.photos/seed/garlicknots/300/200", "choices": [] },
+      { "id": 208, "name": "Calzone", "description": "Ricotta, mozzarella, and your choice of filling", "price": 9.00, "photo": "https://picsum.photos/seed/calzone/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 8, "restaurantId": 3, "name": "Ramen",
+    "items": [
+      { "id": 301, "name": "Original Tonkotsu", "description": "Rich pork bone broth with thin straight noodles, chashu pork, and a seasoned soft-boiled egg", "price": 19.90, "photo": "https://picsum.photos/seed/tonkotsu/300/200",
+        "choices": [
+          { "id": 3, "title": "Spice Level", "required": true, "options": [{ "id": 5, "name": "No Spice", "priceAdd": 0 }, { "id": 6, "name": "Mild", "priceAdd": 0 }, { "id": 7, "name": "Medium", "priceAdd": 0 }, { "id": 8, "name": "Hot", "priceAdd": 0 }] },
+          { "id": 4, "title": "Noodle Firmness", "required": true, "options": [{ "id": 9, "name": "Soft", "priceAdd": 0 }, { "id": 10, "name": "Medium", "priceAdd": 0 }, { "id": 11, "name": "Firm", "priceAdd": 0 }] }
+        ]
+      },
+      { "id": 302, "name": "Spicy Tonkotsu", "description": "Signature tonkotsu broth with a spicy kick", "price": 21.90, "photo": "https://picsum.photos/seed/spicytonkotsu/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 9, "restaurantId": 3, "name": "Add-ons",
+    "items": [
+      { "id": 303, "name": "Extra Noodles", "description": "Additional serving of thin straight noodles", "price": 3.00, "photo": "https://picsum.photos/seed/extranoodles/300/200", "choices": [] },
+      { "id": 304, "name": "Soft Boiled Egg", "description": "Soy-marinated soft boiled egg", "price": 2.50, "photo": "https://picsum.photos/seed/softegg/300/200", "choices": [] },
+      { "id": 305, "name": "Chashu Pork Belly", "description": "Extra slices of braised pork belly", "price": 4.00, "photo": "https://picsum.photos/seed/chashu/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 10, "restaurantId": 4, "name": "Salads",
+    "items": [
+      { "id": 401, "name": "Harvest Bowl", "description": "Wild rice, roasted chicken, sweet potatoes, apples, goat cheese, toasted almonds, balsamic vinaigrette", "price": 14.95, "photo": "https://picsum.photos/seed/harvestbowl/300/200", "choices": [] },
+      { "id": 402, "name": "Kale Caesar", "description": "Shaved kale, romaine, parmesan crisps, grape tomatoes, breadcrumbs, caesar dressing", "price": 12.95, "photo": "https://picsum.photos/seed/kalecaesar/300/200",
+        "choices": [{ "id": 5, "title": "Protein", "required": false, "options": [{ "id": 12, "name": "Roasted Chicken", "priceAdd": 3.00 }, { "id": 13, "name": "Grilled Chicken", "priceAdd": 3.00 }, { "id": 14, "name": "Tuna", "priceAdd": 3.50 }] }] },
+      { "id": 403, "name": "Guacamole Greens", "description": "Baby spinach, shredded cabbage, cucumbers, lime cilantro jalapeño vinaigrette, guacamole", "price": 13.95, "photo": "https://picsum.photos/seed/guacgreens/300/200", "choices": [] },
+      { "id": 404, "name": "Shroomami", "description": "Shredded kale, wild rice, roasted sesame tofu, miso glazed mushrooms, cucumber, shredded cabbage, roasted almonds, miso sesame ginger dressing", "price": 13.95, "photo": "https://picsum.photos/seed/shroomami/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 11, "restaurantId": 4, "name": "Warm Bowls",
+    "items": [
+      { "id": 405, "name": "Chicken Pesto Parm", "description": "Roasted chicken, warm wild rice, shredded kale, roasted tomatoes, parmesan, pesto", "price": 14.95, "photo": "https://picsum.photos/seed/chickenpesto/300/200", "choices": [] },
+      { "id": 406, "name": "Roasted Turkey", "description": "Roasted turkey, roasted sweet potatoes, warm wild rice, apples, cranberry vinaigrette", "price": 14.95, "photo": "https://picsum.photos/seed/roastedturkey/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 12, "restaurantId": 5, "name": "Burritos",
+    "items": [
+      { "id": 501, "name": "Burrito", "description": "Your choice of freshly grilled meat in a large flour tortilla with rice, beans, and all your toppings", "price": 10.70, "photo": "https://picsum.photos/seed/burrito/300/200",
+        "choices": [{ "id": 6, "title": "Protein", "required": true, "options": [{ "id": 15, "name": "Chicken", "priceAdd": 0 }, { "id": 16, "name": "Steak", "priceAdd": 1.50 }, { "id": 17, "name": "Barbacoa", "priceAdd": 1.50 }, { "id": 18, "name": "Sofritas (Vegan)", "priceAdd": 0 }] }] }
+    ]
+  },
+  {
+    "id": 13, "restaurantId": 5, "name": "Bowls",
+    "items": [
+      { "id": 502, "name": "Burrito Bowl", "description": "Your choice of freshly grilled meat with rice, beans, and toppings — no tortilla", "price": 10.70, "photo": "https://picsum.photos/seed/burritobowl/300/200",
+        "choices": [{ "id": 7, "title": "Protein", "required": true, "options": [{ "id": 19, "name": "Chicken", "priceAdd": 0 }, { "id": 20, "name": "Steak", "priceAdd": 1.50 }, { "id": 21, "name": "Carnitas", "priceAdd": 0 }, { "id": 22, "name": "Sofritas (Vegan)", "priceAdd": 0 }] }] },
+      { "id": 503, "name": "Salad Bowl", "description": "Salad base with romaine lettuce, your protein, and all toppings", "price": 10.70, "photo": "https://picsum.photos/seed/chipsalad/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 14, "restaurantId": 5, "name": "Sides & Drinks",
+    "items": [
+      { "id": 504, "name": "Chips & Guacamole", "description": "House-made guacamole with tortilla chips", "price": 5.20, "photo": "https://picsum.photos/seed/chipsguac/300/200", "choices": [] },
+      { "id": 505, "name": "Chips & Salsa", "description": "Fresh tomato salsa with tortilla chips", "price": 3.15, "photo": "https://picsum.photos/seed/chipssalsa/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 15, "restaurantId": 6, "name": "Market Plates",
+    "items": [
+      { "id": 601, "name": "Roasted Chicken Plate", "description": "Roasted chicken with your choice of two sides", "price": 13.95, "photo": "https://picsum.photos/seed/chickenplate/300/200", "choices": [] },
+      { "id": 602, "name": "Salmon Plate", "description": "Roasted salmon with your choice of two sides", "price": 15.95, "photo": "https://picsum.photos/seed/salmonplate/300/200", "choices": [] },
+      { "id": 603, "name": "Veggie Plate", "description": "Three sides of your choice", "price": 11.95, "photo": "https://picsum.photos/seed/veggieplate/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 16, "restaurantId": 6, "name": "Sides",
+    "items": [
+      { "id": 604, "name": "Roasted Broccoli", "description": "Dry-farmed broccoli with chili flakes and lemon", "price": 4.50, "photo": "https://picsum.photos/seed/broccoli/300/200", "choices": [] },
+      { "id": 605, "name": "Roasted Sweet Potatoes", "description": "Oven-roasted with smoked paprika", "price": 4.50, "photo": "https://picsum.photos/seed/sweetpotato/300/200", "choices": [] },
+      { "id": 606, "name": "Brown Rice", "description": "Farm-fresh whole grain rice", "price": 3.50, "photo": "https://picsum.photos/seed/brownrice/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 17, "restaurantId": 7, "name": "Nigiri",
+    "items": [
+      { "id": 701, "name": "Salmon Nigiri", "description": "Wild Atlantic salmon over seasoned rice (2 pieces)", "price": 8.00, "photo": "https://picsum.photos/seed/salmon/300/200", "choices": [] },
+      { "id": 702, "name": "Bluefin Tuna Nigiri", "description": "Premium bluefin tuna over seasoned rice (2 pieces)", "price": 12.00, "photo": "https://picsum.photos/seed/tuna/300/200", "choices": [] },
+      { "id": 703, "name": "Yellowtail Nigiri", "description": "Buttery yellowtail over seasoned rice (2 pieces)", "price": 10.00, "photo": "https://picsum.photos/seed/yellowtail/300/200", "choices": [] },
+      { "id": 704, "name": "Scallop Nigiri", "description": "Sweet Hokkaido scallop over seasoned rice (2 pieces)", "price": 11.00, "photo": "https://picsum.photos/seed/scallop/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 18, "restaurantId": 7, "name": "Rolls",
+    "items": [
+      { "id": 705, "name": "Dragon Roll", "description": "Shrimp tempura, cucumber, avocado on top (8 pieces)", "price": 18.00, "photo": "https://picsum.photos/seed/dragonroll/300/200", "choices": [] },
+      { "id": 706, "name": "Rainbow Roll", "description": "Assorted fish over a California roll (8 pieces)", "price": 22.00, "photo": "https://picsum.photos/seed/rainbowroll/300/200", "choices": [] },
+      { "id": 707, "name": "Spicy Tuna Roll", "description": "Spicy tuna with cucumber and scallions (8 pieces)", "price": 16.00, "photo": "https://picsum.photos/seed/spicytuna/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 19, "restaurantId": 8, "name": "Platters",
+    "items": [
+      { "id": 801, "name": "Chicken Over Rice", "description": "Halal chicken with rice, white sauce, and hot sauce", "price": 11.00, "photo": "https://picsum.photos/seed/chickenrice/300/200", "choices": [] },
+      { "id": 802, "name": "Gyro Over Rice", "description": "Seasoned beef and lamb gyro with rice and sauces", "price": 11.00, "photo": "https://picsum.photos/seed/gyrorice/300/200", "choices": [] },
+      { "id": 803, "name": "Combo Platter", "description": "Both chicken and gyro over rice with sauces", "price": 12.00, "photo": "https://picsum.photos/seed/comboplatter/300/200", "choices": [] },
+      { "id": 804, "name": "Falafel Platter", "description": "Crispy falafel over rice with tahini and hot sauce", "price": 11.00, "photo": "https://picsum.photos/seed/falafelplatter/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 20, "restaurantId": 8, "name": "Sandwiches",
+    "items": [
+      { "id": 805, "name": "Chicken Sandwich", "description": "Halal chicken in a pita with lettuce, tomato, and white sauce", "price": 9.00, "photo": "https://picsum.photos/seed/chickensandwich/300/200", "choices": [] },
+      { "id": 806, "name": "Gyro Sandwich", "description": "Beef and lamb gyro in a pita with all toppings", "price": 9.00, "photo": "https://picsum.photos/seed/gyrosandwich/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 21, "restaurantId": 9, "name": "Sandwiches",
+    "items": [
+      { "id": 901, "name": "Pulled Duroc Pork", "description": "Heritage pork, pickled daikon and carrots, cucumber, cilantro, chili mayo, hoisin", "price": 11.00, "photo": "https://picsum.photos/seed/porkbahn/300/200", "choices": [] },
+      { "id": 902, "name": "Tiger Shrimp", "description": "Grilled tiger shrimp, pickled daikon and carrots, cucumber, cilantro, chili mayo", "price": 13.00, "photo": "https://picsum.photos/seed/shrimpsandwich/300/200", "choices": [] },
+      { "id": 903, "name": "Beef Brisket", "description": "Slow-cooked beef brisket, pickled vegetables, sriracha mayo", "price": 12.00, "photo": "https://picsum.photos/seed/beefbrisket/300/200", "choices": [] },
+      { "id": 904, "name": "Cambodian Spicy Chicken", "description": "Grilled spicy chicken, pickled daikon and carrots, cucumber, cilantro, chili mayo", "price": 11.50, "photo": "https://picsum.photos/seed/spicychicken/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 22, "restaurantId": 9, "name": "Sides & Drinks",
+    "items": [
+      { "id": 905, "name": "Crispy Plantains", "description": "Twice-fried sweet plantains with lime", "price": 4.00, "photo": "https://picsum.photos/seed/plantains/300/200", "choices": [] },
+      { "id": 906, "name": "Coconut Water", "description": "Fresh coconut water", "price": 3.50, "photo": "https://picsum.photos/seed/coconutwater/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 23, "restaurantId": 10, "name": "Sandwiches",
+    "items": [
+      { "id": 1001, "name": "Pastrami on Rye", "description": "House-cured pastrami, spicy brown mustard, Swiss cheese on rye", "price": 15.00, "photo": "https://picsum.photos/seed/pastrami/300/200", "choices": [] },
+      { "id": 1002, "name": "Turkey Club", "description": "Roasted turkey, bacon, lettuce, tomato, mayo on white toast", "price": 13.00, "photo": "https://picsum.photos/seed/turkeyclub/300/200", "choices": [] },
+      { "id": 1003, "name": "Egg Salad", "description": "Fresh egg salad on white or rye bread", "price": 9.00, "photo": "https://picsum.photos/seed/eggsalad/300/200", "choices": [] },
+      { "id": 1004, "name": "Corned Beef", "description": "Slow-cooked corned beef with mustard on rye", "price": 15.00, "photo": "https://picsum.photos/seed/cornedbeef/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 24, "restaurantId": 10, "name": "Soups",
+    "items": [
+      { "id": 1005, "name": "Matzo Ball Soup", "description": "Classic chicken broth with two fluffy matzo balls", "price": 7.00, "photo": "https://picsum.photos/seed/matzosoup/300/200", "choices": [] },
+      { "id": 1006, "name": "Chicken Noodle Soup", "description": "Rich chicken broth with egg noodles and vegetables", "price": 6.50, "photo": "https://picsum.photos/seed/chickensoup/300/200", "choices": [] }
+    ]
+  },
+  {
+    "id": 25, "restaurantId": 10, "name": "Sides",
+    "items": [
+      { "id": 1007, "name": "Half-Sour Pickles", "description": "Fresh-brined half-sour pickles", "price": 3.00, "photo": "https://picsum.photos/seed/pickles/300/200", "choices": [] },
+      { "id": 1008, "name": "Potato Knish", "description": "Freshly baked potato knish", "price": 5.00, "photo": "https://picsum.photos/seed/knish/300/200", "choices": [] }
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+<div class="auth-page d-flex align-items-center justify-content-center min-vh-100 bg-light">
+  <div class="card shadow-sm p-4" style="width: 100%; max-width: 420px; border-radius: 16px;">
+    <div class="text-center mb-4">
+      <div class="fs-1">🍔</div>
+      <h2 class="fw-bold">Create account</h2>
+      <p class="text-muted">Join FoodApp and start ordering</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="row g-3 mb-3">
+        <div class="col">
+          <label class="form-label">First name</label>
+          <input type="text" class="form-control" formControlName="firstName"
+            [class.is-invalid]="form.get('firstName')?.invalid && form.get('firstName')?.touched" />
+          <div class="invalid-feedback">Required.</div>
+        </div>
+        <div class="col">
+          <label class="form-label">Last name</label>
+          <input type="text" class="form-control" formControlName="lastName"
+            [class.is-invalid]="form.get('lastName')?.invalid && form.get('lastName')?.touched" />
+          <div class="invalid-feedback">Required.</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" formControlName="email"
+          [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched" />
+        <div class="invalid-feedback">Enter a valid email.</div>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="password"
+          [class.is-invalid]="form.get('password')?.invalid && form.get('password')?.touched" />
+        <div class="invalid-feedback">Minimum 6 characters.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+        @if (loading) { <span class="spinner-border spinner-border-sm me-2"></span> }
+        Create Account
+      </button>
+    </form>
+
+    <p class="text-center mt-3 mb-0 text-muted small">
+      Already have an account? <a routerLink="/login">Sign in</a>
+    </p>
+  </div>
+</div>

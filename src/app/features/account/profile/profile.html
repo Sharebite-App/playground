@@ -1,0 +1,38 @@
+<div class="card shadow-sm p-4">
+  <h5 class="fw-semibold mb-4">Profile</h5>
+
+  @if (saved()) {
+    <div class="alert alert-success py-2">Changes saved!</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="row g-3 mb-3">
+      <div class="col">
+        <label class="form-label">First name</label>
+        <input type="text" class="form-control" formControlName="firstName"
+          [class.is-invalid]="form.get('firstName')?.invalid && form.get('firstName')?.touched" />
+        <div class="invalid-feedback">Required.</div>
+      </div>
+      <div class="col">
+        <label class="form-label">Last name</label>
+        <input type="text" class="form-control" formControlName="lastName"
+          [class.is-invalid]="form.get('lastName')?.invalid && form.get('lastName')?.touched" />
+        <div class="invalid-feedback">Required.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email"
+        [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched" />
+      <div class="invalid-feedback">Enter a valid email.</div>
+    </div>
+    <div class="mb-4">
+      <label class="form-label">Phone</label>
+      <input type="tel" class="form-control" formControlName="phone" placeholder="555-555-1234" />
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="saving()">
+      @if (saving()) { <span class="spinner-border spinner-border-sm me-2"></span> }
+      Save Changes
+    </button>
+  </form>
+</div>

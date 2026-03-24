@@ -1,34 +1,59 @@
-# A Sharebite Django Playground
+# WebappClone
 
-## Quickstart guide
-- Ensure you have docker on your machine (`brew install --cask docker` will do it on macOS if you use homebrew)
-- Clone this repo locally
-- Run `docker compose up`
-- Run `docker compose run api ./scripts/init.sh`
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.3.
 
-Now you can view the site at `http://localhost:8989`
-And the admin site at `http://localhost:8989/admin` with the username `admin` and the password `Password123!` (or whatever you set in your `.env` file)
+## Development server
 
-## Cleanup
-You can remove your containers and networks with `docker compose down --remove-orphans`
+To start a local development server, run:
 
-You can reset the database by:
-- deleting your local volume `rm -rf ~/DockerDB/mysql-playground/8.0`
-- running the reset script while the project is running `docker compose run api ./scripts/reinit.sh`
+```bash
+ng serve
+```
 
-## Screenshots (User experience)
-![Homepage](screenshots/homepage_img.png)
-*Homepage: The main landing page of Sharebite LITE.*
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-![Restaurant List](screenshots/restaurant_list.png)
-*Restaurant List: Browse all available restaurants.*
+## Code scaffolding
 
-![Menu View](screenshots/menu.png)
-*Menu View: See the menu for a selected restaurant.*
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-![Item View](screenshots/items.png)
-*Section View: View the details of all items in a section.*
+```bash
+ng generate component component-name
+```
 
-## Screenshots (Admin experience)
-![Admin](screenshots/admin.png)
-*Django Admin: The built-in Django admin site for managing the database.*
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

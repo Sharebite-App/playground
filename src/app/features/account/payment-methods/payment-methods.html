@@ -1,0 +1,71 @@
+<div class="card shadow-sm p-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h5 class="fw-semibold mb-0">Payment Methods</h5>
+    <button class="btn btn-sm btn-outline-primary" (click)="showForm.update(v => !v)">
+      <i class="bi bi-plus me-1"></i>Add Card
+    </button>
+  </div>
+
+  @if (showForm()) {
+    <div class="border rounded p-3 mb-4 bg-light">
+      <h6 class="fw-semibold mb-3">New Card</h6>
+      <form [formGroup]="form" (ngSubmit)="add()">
+        <div class="row g-3 mb-3">
+          <div class="col">
+            <label class="form-label">Last 4 digits</label>
+            <input type="text" class="form-control" formControlName="last4" placeholder="4242" maxlength="4"
+              [class.is-invalid]="form.get('last4')?.invalid && form.get('last4')?.touched" />
+            <div class="invalid-feedback">Enter the last 4 digits.</div>
+          </div>
+          <div class="col">
+            <label class="form-label">Brand</label>
+            <select class="form-select" formControlName="brand">
+              <option>Visa</option>
+              <option>Mastercard</option>
+              <option>Amex</option>
+              <option>Discover</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="isDefault" formControlName="isDefault" />
+          <label class="form-check-label" for="isDefault">Set as default</label>
+        </div>
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary btn-sm" [disabled]="saving()">
+            @if (saving()) { <span class="spinner-border spinner-border-sm me-1"></span> }
+            Save
+          </button>
+          <button type="button" class="btn btn-outline-secondary btn-sm" (click)="showForm.set(false)">Cancel</button>
+        </div>
+      </form>
+    </div>
+  }
+
+  @if (authService.currentUser()?.paymentMethods?.length === 0) {
+    <p class="text-muted">No payment methods saved.</p>
+  } @else {
+    <div class="d-flex flex-column gap-2">
+      @for (pm of authService.currentUser()?.paymentMethods; track pm.id) {
+        <div class="border rounded p-3 d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-credit-card fs-5 text-muted"></i>
+            <div>
+              <span class="fw-semibold">{{ pm.brand }}</span>
+              <span class="text-muted ms-2">ending in {{ pm.last4 }}</span>
+              @if (pm.isDefault) { <span class="badge bg-primary ms-2">Default</span> }
+            </div>
+          </div>
+          <div class="d-flex gap-2">
+            @if (!pm.isDefault) {
+              <button class="btn btn-sm btn-outline-secondary" (click)="setDefault(pm.id)">Set default</button>
+            }
+            <button class="btn btn-sm btn-outline-danger" (click)="delete(pm.id)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,217 @@
+.checkout-bg {
+  background: #f5f5f5;
+  min-height: calc(100vh - 60px);
+}
+
+// ── Method bar ──────────────────────────────
+.method-bar {
+  .method-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+    margin-bottom: 2px;
+  }
+  .method-value {
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: default;
+    i { font-size: 0.75rem; }
+  }
+}
+
+// ── Section cards ────────────────────────────
+.checkout-section {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.btn-edit {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  &:hover { background: #f0f0f0; }
+}
+
+// ── Field label ──────────────────────────────
+.field-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+// ── Address buttons ──────────────────────────
+.address-btn {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color 0.15s;
+
+  &:hover { border-color: #aaa; }
+
+  &.selected {
+    border-color: #111;
+    background: #fafafa;
+  }
+}
+
+// ── Saved card row ───────────────────────────
+.saved-card-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+}
+
+// ── Allowance amount ─────────────────────────
+.allowance-amount-row {
+  padding: 12px 14px;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+// ── Honor code ───────────────────────────────
+.honor-code-box {
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #fff5f5;
+
+  .honor-code-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #dc2626;
+  }
+
+  .form-check-input:checked {
+    background-color: #dc2626;
+    border-color: #dc2626;
+  }
+}
+
+// ── Expense note toggle ──────────────────────
+.btn-toggle-note {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 4px 0;
+
+  &:hover { color: #111; }
+}
+
+// ── Order sidebar ────────────────────────────
+.order-sidebar {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 76px; // below navbar
+}
+
+.restaurant-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+
+  .restaurant-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+}
+
+.sidebar-section {
+  border-top: 1px solid #eee;
+  padding: 14px 0;
+}
+
+.summary-toggle {
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  &:hover { color: #444; }
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.tip-btn {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.76rem;
+  cursor: pointer;
+  transition: all 0.1s;
+
+  &:hover { border-color: #888; }
+
+  &.active {
+    background: #111;
+    border-color: #111;
+    color: #fff;
+  }
+}
+
+.sidebar-total {
+  border-top: 1px solid #eee;
+  padding-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1rem;
+}

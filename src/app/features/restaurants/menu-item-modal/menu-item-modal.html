@@ -1,0 +1,86 @@
+<div class="modal-header border-0 pb-0">
+  <h5 class="modal-title fw-bold">{{ item.name }}</h5>
+  <button type="button" class="btn-close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+  <img [src]="item.photo" [alt]="item.name" class="w-100 rounded mb-3 item-photo" />
+  <p class="text-muted">{{ item.description }}</p>
+  <p class="fw-semibold text-primary mb-3">{{ item.price | currencyFormat }}</p>
+
+  @if (item.choices.length > 0) {
+    <form [formGroup]="form">
+      @for (choice of item.choices; track choice.id) {
+        <div class="mb-4">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <h6 class="mb-0 fw-semibold">{{ choice.title }}</h6>
+            @if (choice.required) {
+              <span class="badge bg-secondary">Required</span>
+            }
+          </div>
+          @for (option of choice.options; track option.id) {
+            <div class="form-check choice-option border rounded p-3 mb-2">
+              @if (choice.required) {
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  [name]="choice.id.toString()"
+                  [id]="'opt-' + option.id"
+                  [value]="option.id"
+                  [formControlName]="choice.id.toString()"
+                />
+              } @else {
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [id]="'opt-' + option.id"
+                  [value]="option.id"
+                />
+              }
+              <label class="form-check-label d-flex justify-content-between w-100" [for]="'opt-' + option.id">
+                <span>{{ option.name }}</span>
+                @if (option.priceAdd > 0) {
+                  <span class="text-muted">+{{ option.priceAdd | currencyFormat }}</span>
+                } @else if (option.priceAdd < 0) {
+                  <span class="text-muted">{{ option.priceAdd | currencyFormat }}</span>
+                }
+              </label>
+            </div>
+          }
+        </div>
+      }
+    </form>
+  }
+</div>
+
+<div class="modal-footer border-0 flex-column gap-3 pt-0">
+
+  <!-- Cart conflict confirmation -->
+  @if (showClearConfirm()) {
+    <div class="conflict-banner w-100 rounded p-3">
+      <p class="fw-semibold mb-1" style="font-size: 0.9rem;">Start a new cart?</p>
+      <p class="text-muted mb-3" style="font-size: 0.82rem;">
+        Your cart already has items from another restaurant.
+        Adding this item will clear your current cart.
+      </p>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-secondary btn-sm flex-grow-1" (click)="cancelClear()">Keep current cart</button>
+        <button class="btn btn-primary btn-sm flex-grow-1" (click)="confirmClearAndAdd()">Clear &amp; add</button>
+      </div>
+    </div>
+  } @else {
+    <!-- Quantity stepper -->
+    <div class="d-flex align-items-center justify-content-center gap-3 w-100">
+      <button class="btn btn-outline-secondary btn-sm rounded-circle qty-btn"
+        (click)="quantity.update(q => q > 1 ? q - 1 : 1)">−</button>
+      <span class="fw-semibold fs-5 qty-display">{{ quantity() }}</span>
+      <button class="btn btn-outline-secondary btn-sm rounded-circle qty-btn"
+        (click)="quantity.update(q => q + 1)">+</button>
+    </div>
+
+    <button class="btn btn-primary w-100 py-2 fw-semibold" (click)="addToCart()">
+      Add to cart · {{ itemTotal | currencyFormat }}
+    </button>
+  }
+
+</div>
