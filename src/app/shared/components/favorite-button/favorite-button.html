@@ -1,0 +1,9 @@
+<button
+  type="button"
+  class="btn btn-sm favorite-btn"
+  [class.favorited]="isFavorited"
+  [title]="isFavorited ? 'Remove from favorites' : 'Save to favorites'"
+  (click)="toggle($event)"
+>
+  <i class="bi" [class.bi-heart-fill]="isFavorited" [class.bi-heart]="!isFavorited"></i>
+</button>

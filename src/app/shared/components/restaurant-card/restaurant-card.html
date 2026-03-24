@@ -12,6 +12,11 @@
     @for (tag of restaurant.tags; track tag) {
       <span class="badge bg-primary position-absolute top-0 start-0 m-2">{{ tag }}</span>
     }
+    <app-favorite-button
+      class="position-absolute top-0 end-0 m-2"
+      [restaurant]="restaurant"
+      (favorited)="onFavorited($event)"
+    />
   </div>
   <div class="card-body">
     <h5 class="card-title mb-1">{{ restaurant.name }}</h5>

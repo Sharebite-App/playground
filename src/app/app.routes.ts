@@ -41,7 +41,8 @@ export const routes: Routes = [
       { path: 'addresses', loadComponent: () => import('./features/account/addresses/addresses').then(m => m.Addresses) },
       { path: 'payment-methods', loadComponent: () => import('./features/account/payment-methods/payment-methods').then(m => m.PaymentMethods) },
       { path: 'order-history', loadComponent: () => import('./features/account/order-history/order-history').then(m => m.OrderHistory) },
-      { path: 'allowance', loadComponent: () => import('./features/account/allowance/allowance').then(m => m.Allowance) }
+      { path: 'allowance', loadComponent: () => import('./features/account/allowance/allowance').then(m => m.Allowance) },
+      { path: 'favorites', loadComponent: () => import('./features/account/favorites/favorites').then(m => m.Favorites) }
     ]
   },
   { path: '**', redirectTo: '/restaurants' }
