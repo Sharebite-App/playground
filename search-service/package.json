@@ -1,0 +1,36 @@
+{
+  "name": "@sharebite/search-service",
+  "version": "1.4.0",
+  "private": true,
+  "description": "Restaurant + menu search for the employee app (keyword, filters, geo, personalization).",
+  "main": "dist/http/server.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/http/server.js",
+    "dev": "ts-node-dev --respawn src/http/server.ts",
+    "test": "jest",
+    "lint": "eslint 'src/**/*.ts'",
+    "prisma:generate": "prisma generate"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^8.13.0",
+    "@prisma/client": "^5.12.0",
+    "express": "^4.19.2",
+    "pino": "^8.20.0",
+    "pino-http": "^9.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.0",
+    "jest": "^29.7.0",
+    "prisma": "^5.12.0",
+    "ts-jest": "^29.1.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

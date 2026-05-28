@@ -1,0 +1,111 @@
+// Postgres is the system of record. Elasticsearch is a derived read model
+// (see src/integrations/elasticsearch.ts and docs in README.md). Restaurant
+// documents are denormalized into ES for search; this schema is the source
+// those documents are projected from.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Corporate {
+  id        String   @id @default(cuid())
+  name      String
+  // IANA timezone, e.g. "America/New_York". Period/cutoff math anchors here,
+  // never on the server clock.
+  timezone  String   @default("America/New_York")
+  createdAt DateTime @default(now())
+
+  allowedRestaurants AllowedRestaurant[]
+  users              User[]
+
+  @@map("corporates")
+}
+
+model User {
+  id          String  @id @default(cuid())
+  corporateId String
+  corporate   Corporate @relation(fields: [corporateId], references: [id])
+  email       String  @unique
+
+  flavorProfile FlavorProfile?
+
+  @@index([corporateId])
+  @@map("users")
+}
+
+// A corporate's allowlist of orderable restaurants. Search results MUST be
+// scoped to the requesting corporate's allowlist.
+model AllowedRestaurant {
+  corporateId  String
+  restaurantId String
+  corporate    Corporate  @relation(fields: [corporateId], references: [id])
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+
+  @@id([corporateId, restaurantId])
+  @@index([corporateId])
+  @@map("allowed_restaurants")
+}
+
+model Restaurant {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  cuisine     String
+  rating      Float    @default(0)
+  // Lowest-priced *entree* in cents. Precomputed so search can range-filter on
+  // price without scanning menu items. Refreshed by the menu-sync job.
+  cheapestEntreePriceCents Int   @default(0)
+  latitude    Float
+  longitude   Float
+  // Set false when the POS is unreachable; offline restaurants are excluded
+  // from results. Flipped by the availability watcher (see README).
+  isOnline    Boolean  @default(true)
+  updatedAt   DateTime @updatedAt
+
+  menuItems          MenuItem[]
+  deliveryWindow     DeliveryWindow?
+  allowedByCorporate AllowedRestaurant[]
+
+  @@index([cuisine])
+  @@map("restaurants")
+}
+
+model MenuItem {
+  id           String   @id @default(cuid())
+  restaurantId String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  name         String
+  description  String
+  priceCents   Int
+  isEntree     Boolean  @default(true)
+  // e.g. ["vegan", "gluten_free", "halal"]
+  dietaryTags  String[]
+
+  @@index([restaurantId])
+  @@map("menu_items")
+}
+
+model FlavorProfile {
+  userId              String   @id
+  user                User     @relation(fields: [userId], references: [id])
+  preferredCuisines   String[]
+  dislikedCuisines    String[]
+  dietaryRestrictions String[]
+  updatedAt           DateTime @updatedAt
+
+  @@map("flavor_profiles")
+}
+
+model DeliveryWindow {
+  restaurantId String     @id
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  etaMinutes   Int
+  updatedAt    DateTime   @updatedAt
+
+  @@map("delivery_windows")
+}
