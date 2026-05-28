@@ -67,6 +67,14 @@
 
 ### Part 1B — PR Review (20–30 min)
 
+> **Live PR option:** instead of the inline snippet below, you can run this as a real
+> GitHub PR review — `ai-eng-feature` → `ai-eng-base` ([playground#2](https://github.com/Sharebite-App/playground/pull/2)),
+> a fuller `search-service` codebase where the new endpoint ignores the clean helpers
+> the base already provides. Same findings, richer context. Reviewer answer key (with
+> `file:line` mapping and the planted bad-test) is in
+> [variant-c-pr-review-key.md](variant-c-pr-review-key.md). The inline snippet below
+> remains a self-contained fallback.
+
 **Setup:**
 > Here's a PR implementing the search endpoint. Review it as if it's in your queue.
 

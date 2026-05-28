@@ -18,6 +18,10 @@ Five interview variants, each a self-contained 2-hour kit (Part 1: 60 min system
 
 [scoring-rubric.md](scoring-rubric.md) is a single consolidated scorecard that works for all five variants — dimensions, weights, red-flag gates, and a composite → hire-recommendation mapping. Each variant file still carries its own per-area "what Strong looks like" tables; the rubric turns those observations into a defensible number. **Read its calibration anchor first: OK-across-the-board is a HIRE at mid-level, not a borderline.**
 
+## Live PR review (Variant C)
+
+Variant C's Part 1B is also available as a **real GitHub PR** the candidate reviews in situ: `ai-eng-feature` → `ai-eng-base` ([playground#2](https://github.com/Sharebite-App/playground/pull/2)), backed by a fuller `search-service` codebase on those branches. Reviewer answer key: [variant-c-pr-review-key.md](variant-c-pr-review-key.md) — **reviewer-only; do not push to the candidate-facing branches.**
+
 ## What's in each file
 
 1. **Pre-interview framing** to read aloud to the candidate
